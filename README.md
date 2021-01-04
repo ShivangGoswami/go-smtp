@@ -14,3 +14,5 @@ generate api key from here(for x-api header):
 for executing the program in local copy into go workspace and in terminal type this command when pwd is project directory:
 
 go run cmd\gosmtp-server\main.go
+
+Swagger Spec: /v1/gosmtp/docs
