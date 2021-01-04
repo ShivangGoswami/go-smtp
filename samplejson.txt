@@ -1,0 +1,28 @@
+{
+    "bcc": [
+        {
+            "email": "shivang.goswami.here@gmail.com",
+            "name": "Shivang"
+        }
+    ],
+    "cc": [
+        {
+            "email": "shivang.goswami.here@gmail.com",
+            "name": "Shivang"
+        }
+    ],
+    "customId": "AppGettingStartedTest",
+    "from": {
+        "email": "shivang.goswami.here@gmail.com",
+        "name": "Shivang"
+    },
+    "html": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+    "subject": "Greetings from Mailjet.",
+    "text": "My first Mailjet email",
+    "to": [
+        {
+            "email": "shivang.goswami.here@gmail.com",
+            "name": "Shivang"
+        }
+    ]
+}

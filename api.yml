@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  version: "1.0"
+  title: Go SMTP Micro Service
+  description: A smtp service for golang
+  contact:
+    name: Shivang Goswami
+    email: shivang.goswami@outlook.com
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: Smtp
+    description: Operations related to Smtp
+securityDefinitions:
+    key:
+        type: apiKey
+        in: header
+        name: x-api
+
+definitions:
+    error:
+        x-visibility: public
+        type: object
+        required:
+        - message
+        properties:
+            code:
+                type: integer
+                format: int64
+            message:
+                type: string
+    status:
+        x-visibility: public
+        type: object
+        properties:
+            status:
+                type: string
+    person:
+        type: object
+        required:
+            - name
+            - email
+        properties:
+            name:
+                type: string
+            email:
+                type: string
+                format: email
+    inputParam:
+        x-visibility: public
+        type: object
+        required:
+            - subject
+            - customId
+            - from
+        properties:
+            subject:
+                type: string
+            text:
+                type: string
+            html:
+                type: string
+            customId:
+                type: string
+            from:
+                $ref: '#/definitions/person'
+            to:
+                type: array 
+                items:
+                    $ref: '#/definitions/person'
+            cc:
+                type: array 
+                items:
+                    $ref: '#/definitions/person'
+            bcc:
+                type: array 
+                items:
+                    $ref: '#/definitions/person'
+
+basePath: /v1/gosmtp
+paths:
+    /sendmail:
+        post:
+          x-visibility: public
+          tags: [Smtp]
+          security:
+            - key: []
+          summary: send e-mail
+          description: 
+             send email rest api
+          parameters:
+            - name: inputParam
+              in: body
+              required: true
+              schema:
+                $ref: '#/definitions/inputParam'
+          responses:
+            200:
+              description: Generic success response
+              schema:
+                $ref: '#/definitions/status' 
+            default:
+              description: Generic error response
+              schema:
+                $ref: '#/definitions/error'
